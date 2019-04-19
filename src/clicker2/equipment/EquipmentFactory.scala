@@ -12,7 +12,11 @@ object EquipmentFactory {
       new Excavators
     }else if(equipmentType == "mine"){
       new GoldMines
-    }else{
+    }
+    else if(equipmentType=="alchemy"){
+      new Alchemy
+    }
+    else{
       null
     }
 

@@ -9,6 +9,6 @@ class Alchemy extends Equipment {
   override def goldPerSecond(): Double = this.numberOwned*40
 
   override def costOfNextPurchase(): Double = {
-    10*(this.numberOwned+1)
+    math.pow(10,this.numberOwned+1)
   }
 }

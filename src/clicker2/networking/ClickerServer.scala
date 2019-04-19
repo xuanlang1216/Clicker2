@@ -1,7 +1,9 @@
 package clicker2.networking
+import java.net.InetSocketAddress
 
-import akka.actor.{Actor, ActorSystem, Props}
-
+import akka.actor.{Actor,ActorRef,ActorSystem, Props}
+import akka.io.{IO, Tcp}
+import akka.util.ByteString
 
 case object UpdateGames
 
@@ -10,6 +12,10 @@ case object AutoSave
 case class GameState(gameState: String)
 
 class ClickerServer extends Actor {
+  import Tcp._
+  import context.system
+  IO(Tcp) ! Bind(self, new InetSocketAddress("localhost", 8000))
+  var clients: Set[ActorRef] = Set()
 
   override def receive: Receive = {
 
